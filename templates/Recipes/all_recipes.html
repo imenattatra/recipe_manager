@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+	Ingredients List - Recipe Manager
+{% endblock %}
+
+{% block content %}
+        <div class="row wow fadeIn">
+            <div class="container-fluid">
+				<div class="row justify-content-center">
+					    {% for recipe in all_recipes %}
+							<div class="card col-sm-2 my-3" style="padding-right: 0px!important; padding-left: 0px!important;margin-right: 10px; margin-left: 10px;" >
+								<img class="card-img-top" src='../media/{{recipe.picture}}' alt="" style="height:100px;">
+								<div class="card-body">
+									<h5 class="card-title">{{recipe.name}}</h5>
+									<p class="card-text"></p>
+								</div>
+								<div class="card-footer">
+								   <a href="{% url 'edit_recipe' recipe.id %}" class='btn btn-secondary btn-circle float-right'  title="Edit recipe"><i class="fas fa-edit"></i></a>
+                                   <a href="{% url 'delete_recipe' recipe.id %}" class='btn btn-danger btn-circle delete-recipe float-left' id="{{recipe.id}}"  title="Delete recipe"><i class="fas fa-trash-alt"></i></a>
+								</div>
+							</div>
+					    {% endfor %}
+				</div>
+		 	</div>
+ 		</div>
+{% endblock %}

@@ -87,6 +87,14 @@
             deleteForm.attr("action", url);
             deleteForm.find("#object_delete_name", $(this).attr("id"));
             const modal = $("#delete-modal").modal('show');
+        });
+        $(".delete-recipe").on('click', function (e) {
+            e.preventDefault();
+            const url = $(this).attr("href");
+            const deleteForm = $("#object_delete_form");
+            deleteForm.attr("action", url);
+            deleteForm.find("#object_delete_name", $(this).attr("id"));
+            const modal = $("#delete-modal").modal('show');
         })
     })
     ;

@@ -16,8 +16,8 @@
             <li {% if title == 'Add Ingredient' %} class="active" {% endif %}>
                 <a href="{% url 'add_ingredient' %}">Add Ingredient</a>
             </li>
-             <li>
-                <a href="#">Recipes List</a>
+             <li {% if title == 'Recipes List' %} class="active" {% endif %}>
+                <a href="{% url 'all_recipes' %}">Recipes List</a>
             </li>
             <li>
                 <a href="#">Add Recipe</a>
