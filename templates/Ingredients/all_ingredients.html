@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+	Ingredients List - Recipe Manager
+{% endblock %}
+
+{% block content %}
+
+        <div class="row wow fadeIn">
+            <div class="container-fluid">
+                <div class="card mb-4 wow fadeIn">
+                    <table id="tablePreview" class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Article</th>
+                                <th>Picture</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Cost</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ing in all_ingredients %}
+                            
+                            <tr>
+                                <th scope="row">{{ing.article_number}}</th>
+                                <td>
+                                    <a href="#"> <img src="../media/{{ing.picture}}" class="img-small z-depth-1 rounded-circle" alt="{{ing.article_number}} {{ing.name}}"></a>
+                                </td>
+                                <td>{{ing.name}}</td>
+                                <td>{{ing.category}}</td>
+                                <td>$ {{ing.cost_per_unit}} per {{ing.unit_amount}} {{ing.unit_name}} </td>    
+                                <td scope="row">
+                                    <a href="{% url 'edit_ingredient' ing.id  %}" class='btn btn-secondary btn-circle'  title="Edit ingredient"><i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'delete_ingredient' ing.id  %}" class='btn btn-danger btn-circle delete-ingredient' id="{{ing.id}}"  title="Delete ingredient"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

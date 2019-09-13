@@ -1,0 +1,99 @@
+{% load static %}
+{% load i18n %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/sidebar_navbar.css' %}" rel="stylesheet">
+	<link href="{% static 'css/buttons.css' %}" rel="stylesheet">
+	{% block style_extra %}
+	{% endblock %}
+</head>
+
+<body class="grey lighten-3">
+
+{% include 'parts/response-modal.html' %}
+{% include 'parts/confirm_delete.html' %}
+
+<div class="wrapper">
+{% include 'side-bar.html' %}
+    <div id="content">
+	{% include 'nav-bar.html' %}
+	{% block content %}
+	{% endblock %}
+ </div>
+</div>
+
+<!-- SCRIPTS -->
+<!-- JQuery -->
+<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script> <!-- Bootstrap tooltips -->
+<script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script> <!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script> <!-- MDB core JavaScript -->
+<script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script> <!-- Initializations -->
+<script type="text/javascript" src="{% static 'js/script.js' %}"></script> <!-- Initializations -->
+<script type="text/javascript">
+    // Animations initialization new WOW().init();>
+    $(document).ready(function () {
+		 $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+
+        {% if messages %}
+            $("#add-response").modal('show');
+        {% endif %}
+        /*
+        $("#projet_form_edit").on("submit", function (e) {
+            e.preventDefault();
+            var self = $(this);//this form
+            const tasks_id = $("#id_tasks");
+            const membre_equipe = $("#id_membre_equipe");
+            const members = $("input.members:checked");
+            const tasks = $("input.task_input:checked");
+            $.each(tasks, function () {
+                tasks_id.append('<option value="' + $(this).attr('name') + '" selected=""></option>');
+            });
+            $.each(members, function () {
+                membre_equipe.append('<option value="' + $(this).attr('name') + '" selected=""></option>');
+            });
+
+        $("#projet_form_edit").off("submit");
+                self.submit();
+            });
+        $("#phase_form_edit").on("submit", function (e) {
+            e.preventDefault();
+            var self = $(this);//this form
+            const membre_equipe = $("#id_membre_equipe");
+            const members = $("input.members:checked");
+            $.each(members, function () {
+                membre_equipe.append('<option value="' + $(this).attr('name') + '" selected=""></option>');
+            });
+
+            //$("#projet_form_edit").submit();
+            $("#phase_form_edit").off("submit");//need form submit event off.
+            self.submit();//submit form
+        });
+        */
+        $(".delete-ingredient").on('click', function (e) {
+            e.preventDefault();
+            const url = $(this).attr("href");
+            const deleteForm = $("#object_delete_form");
+            deleteForm.attr("action", url);
+            deleteForm.find("#object_delete_name", $(this).attr("id"));
+            const modal = $("#delete-modal").modal('show');
+        })
+    })
+    ;
+
+</script> <!-- Charts -->
+{% block js_extra %}
+{% endblock %}
+</body>
+
+</html>

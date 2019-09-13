@@ -1,0 +1,33 @@
+<div class="modal fade" id="add-response" tabindex="-1" role="dialog"
+	     aria-labelledby="addModal"
+	     aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+	    {% if messages %}
+		    {% regroup messages by tags as messages %}
+		    {% for tag in messages %}
+              <div class="modal-header">
+	              <h4 class="modal-title" id="myModalLabel">
+		               {% if tag.grouper == "success" %}
+			              Successfull operation
+		              {% else %}
+			              Error
+		              {% endif %}
+	              </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              </div>
+              <div class="modal-body message">
+	              <p>
+		              {% with tag.list|first as message  %}
+			              {{ message }}
+		              {% endwith %}
+	              </p>
+              </div>
+              <div class="modal-footer">
+	              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+		    {% endfor %}
+	    {% endif %}
+    </div>
+</div>
+	</div>

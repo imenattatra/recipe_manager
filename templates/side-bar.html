@@ -1,0 +1,27 @@
+{% load static %}
+
+    <nav id="sidebar">
+        <div class="sidebar-header">
+           <div class="avatar mx-auto">
+				<img src="{% static 'img/chef.png' %}" class="rounded-circle z-depth-1"
+			                                 alt="chef logo">
+			</div>
+        </div>
+
+        <ul class="list-unstyled components">
+            <p>Recipe Manager</p>
+            <li {% if title == 'Ingredients List' %} class="active" {% endif %} >
+                <a href="{% url 'all_ingredients' %}">Ingredients List</a>
+            </li>
+            <li {% if title == 'Add Ingredient' %} class="active" {% endif %}>
+                <a href="{% url 'add_ingredient' %}">Add Ingredient</a>
+            </li>
+             <li>
+                <a href="#">Recipes List</a>
+            </li>
+            <li>
+                <a href="#">Add Recipe</a>
+            </li>
+        </ul>
+    </nav>
+
