@@ -1,0 +1,42 @@
+
+<div class="modal fade" id="add-ingredient-{{ recipe.id }}" tabindex="-1" role="dialog"
+     aria-labelledby="addModal"
+     aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+
+        <form action="" id='add-ingredient-form-{{ recipe.id }}' method="POST" enctype='multipart/form-data'>
+            {% csrf_token %}
+            <!--div class="form-group float-right">
+                    
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="recipe_name">Recipe Name</label>
+                    <input type="text" class="form-control" id="recipe_name" placeholder="Coucous" name="name" required="required" >
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="category">Category</label>
+                    <select class="form-control" id="unit_name" name="category" >
+                        <option disabled value="">Please select one</option>
+                        <option>Appetizers</option>
+                        <option>Beverage</option>
+                        <option>Soups</option>
+                        <option>Salads</option>
+                        <option>Main dishes</option>
+                        <option>Breads</option>
+                        <option>Rolls</option>
+                        <option>Dessert</option>
+                        <option>Misselaneous</option>
+                    </select>              
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-3"> <button type="submit" class="btn btn-primary btn-md">Create recipe</button> </div> 
+            </div-->
+        </form>
+
+		</div>
+	</div>
+</div>
+

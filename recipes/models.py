@@ -9,11 +9,11 @@ MAIN_DISHES="Main dishes"
 BREADS="Breads"
 ROLLS="Rolls"
 DESSERT="Dessert"
-MISSELANEOUS="MIsselaneous"
+MISSELANEOUS="Misselaneous"
         
 class Recipe(models.Model):
     name = models.CharField(max_length=100)
-    picture = models.ImageField(upload_to='ingredients/', blank=True,null=True)
+    picture = models.ImageField(upload_to='recipes/', blank=True,null=True)
     category=models.CharField(
         max_length=100,
         choices=(
@@ -41,7 +41,7 @@ class RecipeIngredient(models.Model):
 
     @property
     def get_cost(self):
-        cost=(self.amout*self.ingredient.coset_per_unit)/self.ingredient.unit_amount
+        cost=(self.amount*self.ingredient.cost_per_unit)/self.ingredient.unit_amount
         return cost
 
 

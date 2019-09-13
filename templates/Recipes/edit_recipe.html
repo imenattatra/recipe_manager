@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+	Edit Recipe - Recipe Manager
+{% endblock %}
+
+{% block content %}
+{% include 'Recipes/add_recipe_ingredient.html' with recipe=recipe %}
+
+<form action="{% url 'edit_recipe' recipe.id %}" method="POST" enctype='multipart/form-data'>
+    {% csrf_token %}
+    <h5>General Informations</h5>
+    <div class="card" style='margin-bottom: 20px;'>
+        <div class="card-body">
+
+                <div class="form-group float-right">
+                    <div class="col-md-6 mb-3">
+                        <a target="_blank" id="image" >
+                        <img src="../../../media/{{recipe.picture}}" id="element_image" style='max-width:150px;' />
+                        </a>
+                        <input type="file" class="form-control"id="myfile" style="display:none" placeholder="Picture" name="picture">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="recipe_name">Recipe Name</label>
+                        <input type="text" class="form-control" id="recipe_name" value='{{recipe.name}}' name="name" required="required" >
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="category">Category</label>
+                        <select class="form-control" id="unit_name" name="category">
+                            <option disabled value="">Please select one</option>
+                            <option {% if recipe.category == 'diary' %} selected {% endif %}>Appetizers</option>
+                            <option {% if recipe.category == 'Beverage' %} selected {% endif %}>Beverage</option>
+                            <option {% if recipe.category == 'Soups' %} selected {% endif %}>Soups</option>
+                            <option {% if recipe.category == 'Salads' %} selected {% endif %}>Salads</option>
+                            <option {% if recipe.category == 'Main dishes' %} selected {% endif %}>Main dishes</option>
+                            <option {% if recipe.category == 'Breads' %} selected {% endif %}>Breads</option>
+                            <option {% if recipe.category == 'Rolls' %} selected {% endif %}>Rolls</option>
+                            <option {% if recipe.category == 'Dessert' %} selected {% endif %}>Dessert</option>
+                            <option {% if recipe.category == 'Misselaneous' %} selected {% endif %}>Misselaneous</option>
+                        </select>              
+                    </div>
+                </div>
+
+        </div>
+    </div>
+
+    <h5>Recipe's Ingredients
+        <a href="{% url 'add_recipe_ingredient' recipe.id %}" type="button" id='{{recipe.id}}' class="btn btn-info btn-circle add-ingredient">
+            <i class="fas fa-plus"></i>
+        </a>
+    </h5>  
+    
+
+        <div class="row wow fadeIn">
+            <div class="container-fluid">
+                <div class="card mb-4 wow fadeIn">
+                    <table id="tablePreview" class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Ingredient</th>
+                                <th>Picture</th>
+                                <th>Amount</th>
+                                <th>Cost</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ing in all_recipe_ingredients %}
+                            
+                            <tr>
+                                <th scope="row">{{ing.ingredient.name}}</th>
+                                <td>
+                                    <a href="#"> <img src="../../../media/{{ing.ingredient.picture}}" class="img-small z-depth-1 rounded-circle" alt="{{ing.article_number}} {{ing.name}}"></a>
+                                </td>
+                                <td>{{ing.amount}} {{ing.ingredient.unit_name}}</td>
+                                <td>$ {{ing.get_cost}}</td>
+                                <td scope="row">
+                                    <a href="{% url 'edit_ingredient' ing.id  %}" class='btn btn-secondary btn-circle'  title="Edit ingredient"><i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'delete_ingredient' ing.id  %}" class='btn btn-danger btn-circle delete-ingredient' id="{{ing.id}}"  title="Delete ingredient"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    <div class="card" style='margin-bottom: 20px;'>
+        <div class="card-body">
+            <div class="form-row">
+                <div class="col-md-3"> <button type="submit" class="btn btn-primary btn-md">Save</button> </div> <!-- Grid column -->
+            </div>
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

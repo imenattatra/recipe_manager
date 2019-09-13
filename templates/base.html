@@ -34,6 +34,7 @@
 <!-- SCRIPTS -->
 <!-- JQuery -->
 <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script> <!-- Bootstrap tooltips -->
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script> <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script> <!-- MDB core JavaScript -->
 <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script> <!-- Initializations -->
@@ -95,11 +96,49 @@
             deleteForm.attr("action", url);
             deleteForm.find("#object_delete_name", $(this).attr("id"));
             const modal = $("#delete-modal").modal('show');
-        })
+        });
+
+        /***
+        Scipt to display image preview when adding an image in a form
+        ***/
+        
+        $('#image').click(function(){
+            $('#myfile').click();
+        });
+        $('#myfile').change(function(){
+            readURL(this);
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                
+                reader.onload = function(e) {
+                $('#element_image').attr('src', e.target.result);
+                }
+                
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        /***
+        End of ----- Scipt to display image preview when clicking on it
+        ***/
+        /***
+        Scipt to display modal to add or edit recipe's ingredients
+        ***/
+        $(".add-ingredient").on('click', function (e) {
+                e.preventDefault();
+                const count2 = parseInt($(this).attr("id"));
+                const url = $(this).attr("href");
+                const addForm = $("#add-ingredient-form-" + count2);
+                addForm.attr("action", url);
+                $("#add-ingredient-" + count2).modal('show');
+            })
+        /***
+        End of ------- Scipt to display modal to add or edit recipe's ingredients
+        ***/
     })
     ;
-
-</script> <!-- Charts -->
+</script> 
 {% block js_extra %}
 {% endblock %}
 </body>

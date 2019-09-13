@@ -32,7 +32,11 @@ urlpatterns = [
     path('recipes/', RecipeList.as_view(), name='all_recipes'),
     path('recipes/add/', RecipeCreate.as_view(), name='add_recipe'),
     path('recipes/<int:pk>/delete/', RecipeDelete.as_view(), name='delete_recipe'),
-    path('recipe/<int:pk>/edit/', RecipeEdit.as_view(), name='edit_recipe'),
+    path('recipes/<int:pk>/edit/', RecipeEdit.as_view(), name='edit_recipe'),
+
+    #list and crud for recipe ingredients(ingredient+amount for the recipe)
+    path('recipes/<int:pk>/recipeingredient/add/', RecipeIngredientCreate.as_view() , name='add_recipe_ingredient'),
+
     #path('recipe/<int:pk>/detail/', IngredientDetail.as_view(), name='details_recipe'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\

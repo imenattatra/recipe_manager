@@ -19,8 +19,8 @@
              <li {% if title == 'Recipes List' %} class="active" {% endif %}>
                 <a href="{% url 'all_recipes' %}">Recipes List</a>
             </li>
-            <li>
-                <a href="#">Add Recipe</a>
+            <li {% if title == 'Add Recipe' %} class="active" {% endif %}>
+                <a href="{% url 'add_recipe' %}">Add Recipe</a>
             </li>
         </ul>
     </nav>

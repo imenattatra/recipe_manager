@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+	Add Recipe - Recipe Manager
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <form action="{% url 'add_recipe'%}" method="POST" enctype='multipart/form-data'>
+            {% csrf_token %}
+            <!-- Grid row -->
+            <div class="form-group float-right">
+                    <div class="col-md-6 mb-3">
+                        <a target="_blank" id="image" >
+                        <img src="{% static 'img/150x100.png' %}" id="element_image" style='max-width:150px;' />
+                        </a>
+                        <input type="file" class="form-control"id="myfile" style="display:none" placeholder="Picture" name="picture">
+                    </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="recipe_name">Recipe Name</label>
+                    <input type="text" class="form-control" id="recipe_name" placeholder="Coucous" name="name" required="required" >
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="category">Category</label>
+                    <select class="form-control" id="unit_name" name="category" >
+                        <option disabled value="">Please select one</option>
+                        <option>Appetizers</option>
+                        <option>Beverage</option>
+                        <option>Soups</option>
+                        <option>Salads</option>
+                        <option>Main dishes</option>
+                        <option>Breads</option>
+                        <option>Rolls</option>
+                        <option>Dessert</option>
+                        <option>Misselaneous</option>
+                    </select>              
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-3"> <button type="submit" class="btn btn-primary btn-md">Create recipe</button> </div> <!-- Grid column -->
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
