@@ -9,7 +9,7 @@ from django.urls import reverse
 
 class IngredientList(ListView):
     model = Ingredient
-    template_name = "Ingredients/all_ingredients.html"
+    template_name = "all_ingredients.html"
     context_object_name = "all_ingredients"
     def get_context_data(self, **kwargs):
         context = super(IngredientList, self).get_context_data(**kwargs)
@@ -33,7 +33,7 @@ class IngredientList(ListView):
 
 class IngredientCreate(CreateView):
     model = Ingredient
-    template_name = "Ingredients/add_ingredient.html"
+    template_name = "add_ingredient.html"
     fields = '__all__'
 
     def get_context_data(self, **kwargs):
@@ -60,7 +60,7 @@ class IngredientDelete(DeleteView):
 class IngredientEdit(UpdateView):
     model = Ingredient
     form_class = IngredientForm
-    template_name = 'Ingredients/edit_ingredient.html'
+    template_name = 'edit_ingredient.html'
     context_object_name = 'ingredient'
 
     def get_context_data(self, **kwargs):
