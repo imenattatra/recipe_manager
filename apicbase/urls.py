@@ -1,24 +1,10 @@
-"""apicbase URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from ingredients.views import *
 from recipes.views import *
 from apicbase import settings
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     
@@ -35,9 +21,9 @@ urlpatterns = [
     path('recipes/<int:pk>/edit/', RecipeEdit.as_view(), name='edit_recipe'),
 
     #list and crud for recipe ingredients(ingredient+amount for the recipe)
-    #path('recipes/<int:pk>/recipeingredient/add/', RecipeIngredientCreate.as_view() , name='add_recipe_ingredient'),
-    path('recipes/<int:pk>/recipeingredient/add/',create_recipe_ingredient,name='add_recipe_ingredient')
-    #path('recipe/<int:pk>/detail/', IngredientDetail.as_view(), name='details_recipe'),
+    path('recipes/<int:recipe_id>/recipeingredient/add/',create_recipe_ingredient,name='add_recipe_ingredient'),
+    path('recipes/<int:recipe_id>/recipeingredient/<int:pk>/delete/',RecipeIngredientDelete.as_view(),name='delete_recipe_ingredient'),
+    path('recipes/<int:recipe_id>/recipeingredient/<int:pk>/edit/',edit_recipe_ingredient,name='edit_recipe_ingredient'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\
-              + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
++ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

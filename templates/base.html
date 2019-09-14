@@ -40,7 +40,6 @@
 <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script> <!-- Initializations -->
 <script type="text/javascript" src="{% static 'js/script.js' %}"></script> <!-- Initializations -->
 <script type="text/javascript">
-    // Animations initialization new WOW().init();>
     $(document).ready(function () {
 		 $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
@@ -49,38 +48,7 @@
         {% if messages %}
             $("#add-response").modal('show');
         {% endif %}
-        /*
-        $("#projet_form_edit").on("submit", function (e) {
-            e.preventDefault();
-            var self = $(this);//this form
-            const tasks_id = $("#id_tasks");
-            const membre_equipe = $("#id_membre_equipe");
-            const members = $("input.members:checked");
-            const tasks = $("input.task_input:checked");
-            $.each(tasks, function () {
-                tasks_id.append('<option value="' + $(this).attr('name') + '" selected=""></option>');
-            });
-            $.each(members, function () {
-                membre_equipe.append('<option value="' + $(this).attr('name') + '" selected=""></option>');
-            });
-
-        $("#projet_form_edit").off("submit");
-                self.submit();
-            });
-        $("#phase_form_edit").on("submit", function (e) {
-            e.preventDefault();
-            var self = $(this);//this form
-            const membre_equipe = $("#id_membre_equipe");
-            const members = $("input.members:checked");
-            $.each(members, function () {
-                membre_equipe.append('<option value="' + $(this).attr('name') + '" selected=""></option>');
-            });
-
-            //$("#projet_form_edit").submit();
-            $("#phase_form_edit").off("submit");//need form submit event off.
-            self.submit();//submit form
-        });
-        */
+       
         $(".delete-ingredient").on('click', function (e) {
             e.preventDefault();
             const url = $(this).attr("href");
@@ -132,6 +100,14 @@
                 const addForm = $("#add-ingredient-form-" + count);
                 addForm.attr("action", url);
                 $("#add-ingredient-" + count).modal('show');
+            })
+        $(".edit-ingredient").on('click', function (e) {
+                e.preventDefault();
+                const count = parseInt($(this).attr("id"));
+                const url = $(this).attr("href");
+                const addForm = $("#edit-ingredient-form-" + count);
+                addForm.attr("action", url);
+                $("#edit-ingredient-" + count).modal('show');
             })
         /***
         End of ------- Scipt to display modal to add or edit recipe's ingredients

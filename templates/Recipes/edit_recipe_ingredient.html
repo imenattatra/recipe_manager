@@ -1,0 +1,44 @@
+
+<div class="modal fade" id="edit-ingredient-{{ recipe_ingredient.id }}" tabindex="-1" role="dialog"
+     aria-labelledby="addModal"
+     aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+
+        <form action="" id='edit-ingredient-form-{{ recipe_ingredient.id }}' method="POST" enctype='multipart/form-data'>
+            {% csrf_token %}
+            <div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">
+						Edit the recipe's ingredient
+					</h4>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			</div>
+            <div class="modal-body message">
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="category">Ingredient</label>
+                        <select class="form-control" id="ingredient" name="ingredient" >
+                            <option disabled value="">Please select one</option>
+                             {% for ing in all_ingredients %}
+                            <option {% if recipe_ingredient.ingredient.name == ing.name %} selected {% endif %} value='{{ing.id}}'>{{ing.name}}</option>
+                             {% endfor %}
+                        </select>              
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="ingredient_amount">Amount</label>
+                        <input type="text" class="form-control" id="anmount" value={{recipe_ingredient.amount}} name="amount" required="required" >
+                    </div>
+                </div>
+            </div>
+			<div class="modal-footer">
+                <div class="form-row">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-danger" value="EDIT">Add</button>
+                </div>
+			</div>
+        </form>
+
+		</div>
+	</div>
+</div>
+
