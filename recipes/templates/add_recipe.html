@@ -9,8 +9,7 @@
     <div class="card-body">
         <form action="{% url 'add_recipe'%}" method="POST" enctype='multipart/form-data'>
             {% csrf_token %}
-            <!-- Grid row -->
-            <div class="form-group float-right">
+            <div class="form-group float-left">
                     <div class="col-md-6 mb-3">
                         <a target="_blank" id="image" >
                         <img src="{% static 'img/150x100.png' %}" id="element_image" style='max-width:150px;' />
@@ -39,8 +38,8 @@
                     </select>              
                 </div>
             </div>
-            <div class="form-row">
-                <div class="col-md-3"> <button type="submit" class="btn btn-primary btn-md">Create recipe</button> </div> <!-- Grid column -->
+            <div class="form-row float-right">
+                <div class="col-md-3"> <button type="submit" class="btn btn-success btn-md">Save</button> </div> <!-- Grid column -->
             </div>
         </form>
     </div>

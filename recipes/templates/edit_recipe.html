@@ -5,10 +5,10 @@
 {% endblock %}
 
 {% block content %}
-{% include 'Recipes/add_recipe_ingredient.html' with recipe=recipe %}
+{% include 'add_recipe_ingredient.html' with recipe=recipe %}
 
 {% for recipe_ingredient in all_recipe_ingredients %}
-{% include 'Recipes/edit_recipe_ingredient.html' with recipe_ingredient=recipe_ingredient %}
+{% include 'edit_recipe_ingredient.html' with recipe_ingredient=recipe_ingredient %}
 {% endfor %}
 
 <form action="{% url 'edit_recipe' recipe.id %}" method="POST" enctype='multipart/form-data'>
@@ -49,7 +49,7 @@
 
                 <div class="form-group float-right">
                     <div class="col-md-4 mb-3">
-                     <button type="submit" class="btn btn-primary btn-md">Save</button> 
+                     <button type="submit" class="btn btn-success btn-md">Save</button> 
                     </div> 
                 </div>
 
@@ -89,7 +89,7 @@
                                 <td>{{ing.amount}} {{ing.ingredient.unit_name}}</td>
                                 <td>€ {{ing.get_cost}}</td>
                                 <td scope="row">
-                                    <a href="{% url 'edit_recipe_ingredient' recipe.id ing.id  %}" class='btn btn-secondary btn-circle edit-ingredient' id="{{ing.id}}"   title="Edit ingredient"><i class="fas fa-edit"></i></a>
+                                    <a href="{% url 'edit_recipe_ingredient' recipe.id ing.id  %}" class='btn btn-success btn-circle edit-ingredient' id="{{ing.id}}"   title="Edit ingredient"><i class="fas fa-edit"></i></a>
                                     <a href="{% url 'delete_recipe_ingredient' recipe.id ing.id  %}" class='btn btn-danger btn-circle delete-ingredient' id="{{ing.id}}"  title="Delete ingredient"><i class="fas fa-trash-alt"></i></a>
                                 </td>
                             </tr>

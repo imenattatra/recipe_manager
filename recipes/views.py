@@ -39,7 +39,7 @@ class RecipeCreate(CreateView):
 
     def form_valid(self, form):
         c=form.save()
-        messages.success(self.request, "Recipe created successfully, you can now add ingredients to your recipe")
+        messages.success(self.request, "You can now add ingredients to your recipe")
         #we redirect to the "edit recipe" so the user can add ingrediants
         id=c.id
         return HttpResponseRedirect('/recipes/'+str(id)+'/edit/')
@@ -59,8 +59,10 @@ class RecipeEdit(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(RecipeEdit, self).get_context_data(**kwargs)
         context['title'] = 'Edit Recipe'
-        context['all_ingredients'] = Ingredient.objects.all()
         context['all_recipe_ingredients'] = RecipeIngredient.objects.filter(recipe_id=self.kwargs.get('pk'))
+        #hide ingredients that are already in recipe from selection
+        existing_ingredients=Ingredient.objects.filter(recipeingredient__in=context['all_recipe_ingredients'] )
+        context['all_ingredients'] = Ingredient.objects.exclude(id__in=existing_ingredients)
         return context
 
     def form_invalid(self, form):

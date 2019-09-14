@@ -10,16 +10,35 @@
     <div class="card-body">
         <form action="{% url 'add_ingredient'%}" method="POST" enctype='multipart/form-data'>
             {% csrf_token %}
-            <!-- Grid row -->
+            <div class="form-group " style="width:150px;heigth:150px;">
+                    <div class="col-md-6 mb-3">
+                        <a target="_blank" id="image" >
+                        <img src="{% static 'img/150x100.png' %}" id="element_image" style='max-width:150px;' />
+                        </a>
+                        <input type="file" class="form-control"id="myfile" style="display:none" placeholder="Picture" name="picture">
+                    </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="ingredient_number">Article number</label>
+                    <input type="number" class="form-control" id="ingredient_number" placeholder="123456" name="article_number" required="required" >
+                </div>
+            </div>
             <div class="form-row">
                 <div class="col-md-6 mb-3">
                     <label for="ingredient_name">Ingredient Name</label>
                     <input type="text" class="form-control" id="ingredient_name" placeholder="Orange" name="name" required="required" >
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="ingredient_number">Article number</label>
-                    <input type="number" class="form-control" id="ingredient_number" placeholder="123456" name="article_number" required="required" >
-                </div>
+                    <label for="category">Category</label>
+                    <select class="form-control" id="unit_name" name="category" >
+                        <option disabled value="">Please select one</option>
+                        <option>Diary</option>
+                        <option>Vegetables</option>
+                        <option>Fruits</option>
+                        <option>Fish</option>
+                    </select>  
+                </div>                  
             </div>
             <div class="form-row">
                 <div class="col-md-6 mb-3">
@@ -41,22 +60,9 @@
                     </select>                
                 </div>
             </div>
-            <div class="form-group">
-                <label for="picture">Picture</label>
-                <input type="file" class="form-control"id="picture"  placeholder="Picture" name="picture">
-            </div>
-            <div class="form-group">
-                <label for="category">Category</label>
-                    <select class="form-control" id="unit_name" name="category" >
-                        <option disabled value="">Please select one</option>
-                        <option>Diary</option>
-                        <option>Vegetables</option>
-                        <option>Fruits</option>
-                        <option>Fish</option>
-                    </select>                    
-            </div>
-            <div class="form-row">
-                <div class="col-md-3"> <button type="submit" class="btn btn-primary btn-md">Add ingredient</button> </div> <!-- Grid column -->
+            
+            <div class="form-row float-right">
+                <div class="col-md-3 "> <button type="submit" class="btn btn-success btn-md">Save</button> </div> <!-- Grid column -->
             </div>
         </form>
     </div>
