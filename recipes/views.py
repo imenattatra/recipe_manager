@@ -15,7 +15,7 @@ Recipe CRUD views
 """
 class RecipeList(ListView):
     model = Recipe
-    template_name = "Recipes/all_recipes.html"
+    template_name = "all_recipes.html"
     context_object_name = "all_recipes"
     def get_context_data(self, **kwargs):
         context = super(RecipeList, self).get_context_data(**kwargs)
@@ -24,7 +24,7 @@ class RecipeList(ListView):
 
 class RecipeCreate(CreateView):
     model = Recipe
-    template_name = "Recipes/add_recipe.html"
+    template_name = "add_recipe.html"
     fields = '__all__'
 
     def get_context_data(self, **kwargs):
@@ -53,7 +53,7 @@ class RecipeDelete(DeleteView):
 class RecipeEdit(UpdateView):
     model = Recipe
     form_class = RecipeForm
-    template_name = 'Recipes/edit_recipe.html'
+    template_name = 'edit_recipe.html'
     context_object_name = 'recipe'
 
     def get_context_data(self, **kwargs):
@@ -76,7 +76,7 @@ class RecipeEdit(UpdateView):
 class RecipeDetail(DetailView):
     model = Recipe
     form_class = RecipeForm
-    template_name = 'Recipes/view_recipe.html'
+    template_name = 'view_recipe.html'
     context_object_name = 'recipe'
 
     def get_context_data(self, **kwargs):
