@@ -13,10 +13,10 @@ DESSERT="Dessert"
 MISSELANEOUS="Misselaneous"
         
 class Recipe(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=255)
     picture = models.ImageField(upload_to='recipes/', blank=True,null=True)
     category=models.CharField(
-        max_length=100,
+        max_length=255,
         choices=(
             (APPETIZERS, APPETIZERS),
             (BEVERAGE, BEVERAGE),

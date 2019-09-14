@@ -29,11 +29,11 @@ BEVERAGES = "Beverages"
 
 class Ingredient(models.Model):
     #
-    name = models.CharField(max_length=100)
-    article_number = models.IntegerField()
+    name = models.CharField(max_length=255,unique=True)
+    article_number = models.IntegerField(unique=True)
     cost_per_unit = models.FloatField(default=1)
     unit_name = models.CharField(
-        max_length=100,
+        max_length=255,
         choices=(
             (GRAMS, GRAMS),
             (KILOGRAMS, KILOGRAMS),
@@ -46,7 +46,7 @@ class Ingredient(models.Model):
     #
     picture = models.ImageField(upload_to='ingredients/', blank=True,null=True)
     category = models.CharField(
-        max_length=100,
+        max_length=255,
         choices=(
             (DIARY, DIARY),
             (VEGETABLES, VEGETABLES),
