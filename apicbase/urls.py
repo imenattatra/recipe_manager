@@ -19,6 +19,7 @@ urlpatterns = [
     path('recipes/add/', RecipeCreate.as_view(), name='add_recipe'),
     path('recipes/<int:pk>/delete/', RecipeDelete.as_view(), name='delete_recipe'),
     path('recipes/<int:pk>/edit/', RecipeEdit.as_view(), name='edit_recipe'),
+    path('recipes/<int:pk>/detail/', RecipeDetail.as_view(), name='view_recipe'),
 
     #list and crud for recipe ingredients(ingredient+amount for the recipe)
     path('recipes/<int:recipe_id>/recipeingredient/add/',create_recipe_ingredient,name='add_recipe_ingredient'),

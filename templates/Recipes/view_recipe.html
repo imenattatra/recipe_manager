@@ -1,38 +1,29 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-	Edit Recipe - Recipe Manager
+	Detail Recipe - Recipe Manager
 {% endblock %}
 
 {% block content %}
-{% include 'Recipes/add_recipe_ingredient.html' with recipe=recipe %}
 
-{% for recipe_ingredient in all_recipe_ingredients %}
-{% include 'Recipes/edit_recipe_ingredient.html' with recipe_ingredient=recipe_ingredient %}
-{% endfor %}
-
-<form action="{% url 'edit_recipe' recipe.id %}" method="POST" enctype='multipart/form-data'>
-    {% csrf_token %}
-    <h5>Edit General Informations</h5>
+    <h5>General Informations</h5>
     <div class="card" style='margin-bottom: 20px;'>
         <div class="card-body">
 
                 <div class="form-group float-left">
                     <div class="col-md-6 mb-3">
-                        <a target="_blank" id="image" >
                         <img src="../../../media/{{recipe.picture}}" id="element_image" style='max-width:150px;' />
-                        </a>
-                        <input type="file" class="form-control"id="myfile" style="display:none" placeholder="Picture" name="picture">
+                        <input type="file" class="form-control"id="myfile" style="display:none" placeholder="Picture" name="picture" disabled>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col-md-6 mb-3">
                         <label for="recipe_name">Recipe Name</label>
-                        <input type="text" class="form-control" id="recipe_name" value='{{recipe.name}}' name="name" required="required" >
+                        <input type="text" class="form-control" id="recipe_name" value='{{recipe.name}}' name="name" required="required" disabled>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="category">Category</label>
-                        <select class="form-control" id="unit_name" name="category">
+                        <select class="form-control" id="unit_name" name="category" disabled>
                             <option disabled value="">Please select one</option>
                             <option {% if recipe.category == 'diary' %} selected {% endif %}>Appetizers</option>
                             <option {% if recipe.category == 'Beverage' %} selected {% endif %}>Beverage</option>
@@ -46,20 +37,10 @@
                         </select>              
                     </div>
                 </div>
-
-                <div class="form-group float-right">
-                    <div class="col-md-4 mb-3">
-                     <button type="submit" class="btn btn-primary btn-md">Save</button> 
-                    </div> 
-                </div>
-
         </div>
     </div>
 
-    <h5>Edit Recipe's Ingredients
-        <a href="{% url 'add_recipe_ingredient' recipe.id %}" type="button" id='{{recipe.id}}' class="btn btn-info btn-circle add-ingredient">
-            <i class="fas fa-plus"></i>
-        </a>
+    <h5>Recipe's Ingredients
         <div class="float-right"">Total cost : € {{recipe.get_total_cost}} </div> <!-- Grid column -->
 
     </h5>  
@@ -75,7 +56,6 @@
                                 <th>Picture</th>
                                 <th>Amount</th>
                                 <th>Cost</th>
-                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -88,10 +68,6 @@
                                 </td>
                                 <td>{{ing.amount}} {{ing.ingredient.unit_name}}</td>
                                 <td>€ {{ing.get_cost}}</td>
-                                <td scope="row">
-                                    <a href="{% url 'edit_recipe_ingredient' recipe.id ing.id  %}" class='btn btn-secondary btn-circle edit-ingredient' id="{{ing.id}}"   title="Edit ingredient"><i class="fas fa-edit"></i></a>
-                                    <a href="{% url 'delete_recipe_ingredient' recipe.id ing.id  %}" class='btn btn-danger btn-circle delete-ingredient' id="{{ing.id}}"  title="Delete ingredient"><i class="fas fa-trash-alt"></i></a>
-                                </td>
                             </tr>
                             {% endfor %}
                         </tbody>
@@ -100,6 +76,5 @@
             </div>
         </div>
 
-</form>
 
 {% endblock %}

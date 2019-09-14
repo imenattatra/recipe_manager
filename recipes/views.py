@@ -1,11 +1,13 @@
-from django.shortcuts import render
-from django.views.generic import DeleteView, UpdateView,ListView,CreateView
-from recipes.models import Recipe,RecipeIngredient
-from ingredients.models import Ingredient
 from django.contrib import messages
-from django.urls import reverse
 from django.http import HttpResponseRedirect
-from recipes.forms import RecipeForm,RecipeIngredientForm
+from django.shortcuts import render
+from django.urls import reverse
+from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
+                                  UpdateView)
+
+from ingredients.models import Ingredient
+from recipes.forms import RecipeForm, RecipeIngredientForm
+from recipes.models import Recipe, RecipeIngredient
 
 
 """
@@ -71,6 +73,18 @@ class RecipeEdit(UpdateView):
         messages.success(self.request, "Recipe modified successfully")
         return HttpResponseRedirect('/recipes/')
 
+class RecipeDetail(DetailView):
+    model = Recipe
+    form_class = RecipeForm
+    template_name = 'Recipes/view_recipe.html'
+    context_object_name = 'recipe'
+
+    def get_context_data(self, **kwargs):
+        context = super(RecipeDetail, self).get_context_data(**kwargs)
+        context['title'] = 'Detail Recipe'
+        context['all_ingredients'] = Ingredient.objects.all()
+        context['all_recipe_ingredients'] = RecipeIngredient.objects.filter(recipe_id=self.kwargs.get('pk'))
+        return context
 """
 Recipe INGREDIENT CRUD views (Recipe INGREDIENT=iNGREDIENT + amount of this ingredient for the recipe)
 """

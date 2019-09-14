@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Sum
 from ingredients.models import Ingredient
 
 APPETIZERS="Appetizers"
@@ -32,7 +33,10 @@ class Recipe(models.Model):
     @property
     def get_total_cost(self):
         list_recipe_ingredients=self.recipeingredient_set.all()
-        #TODO aggreagate by cost
+        som=0
+        for elem in list_recipe_ingredients:
+            som=som+elem.get_cost
+        return som
 
 class RecipeIngredient(models.Model):
     ingredient=models.ForeignKey(Ingredient, on_delete=models.CASCADE)
