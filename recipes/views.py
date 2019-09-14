@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from django.views.generic import DeleteView, UpdateView,ListView,CreateView
 from recipes.models import Recipe,RecipeIngredient
+from ingredients.models import Ingredient
 from django.contrib import messages
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from recipes.forms import RecipeForm,RecipeIngredientForm
 """
-Recipe INGREDIENT CRUD views ( iNGREDIENT + amount of this ingredient for the recipe)
+Recipe INGREDIENT CRUD views (Recipe INGREDIENT=iNGREDIENT + amount of this ingredient for the recipe)
 """
+'''
 class RecipeIngredientCreate(CreateView):
     model = RecipeIngredient
     template_name = "Recipes/add_recipe_ingredient.html"
@@ -25,11 +27,28 @@ class RecipeIngredientCreate(CreateView):
 
     def form_valid(self, form):
         form.save()
+        print("---")
         print(form)
+        print("---")
         #FIXME correct redirection
         messages.success(self.request, "Ingredient addedd successfully to the recipe.")
         #we redirect to the "edit recipe" 
         return HttpResponseRedirect('/recipes/')
+'''
+def create_recipe_ingredient(request,pk):
+    if request.method == "POST":
+
+        ingredient =Ingredient.objects.get(id=request.POST.get("ingredient"))
+        recipe=Recipe.objects.get(id=pk)
+        amount = request.POST.get("amount")
+        try :
+            RecipeIngredient(recipe=recipe,ingredient=ingredient,amount=amount).save()
+            messages.success(request, "Ingredient addedd successfully to the recipe.")
+        except Exception as e:
+            print(e)
+            messages.error(request, "Something went wrong.")
+    return HttpResponseRedirect('/recipes/' + str(pk) + '/edit/')
+
 """
 Recipe CRUD views
 """
@@ -79,6 +98,7 @@ class RecipeEdit(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(RecipeEdit, self).get_context_data(**kwargs)
         context['title'] = 'Edit Recipe'
+        context['all_ingredients'] = Ingredient.objects.all()
         context['all_recipe_ingredients'] = RecipeIngredient.objects.filter(recipe_id=self.kwargs.get('pk'))
         return context
 

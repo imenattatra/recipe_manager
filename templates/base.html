@@ -127,11 +127,11 @@
         ***/
         $(".add-ingredient").on('click', function (e) {
                 e.preventDefault();
-                const count2 = parseInt($(this).attr("id"));
+                const count = parseInt($(this).attr("id"));
                 const url = $(this).attr("href");
-                const addForm = $("#add-ingredient-form-" + count2);
+                const addForm = $("#add-ingredient-form-" + count);
                 addForm.attr("action", url);
-                $("#add-ingredient-" + count2).modal('show');
+                $("#add-ingredient-" + count).modal('show');
             })
         /***
         End of ------- Scipt to display modal to add or edit recipe's ingredients
