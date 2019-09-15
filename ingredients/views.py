@@ -90,6 +90,7 @@ class IngredientEdit(UpdateView):
 """
 Functions that check existence of ingredient while creating: 
 -check_ingredient_by_number
+-check_ingredient_by_name
 """
 
 def check_ingredient_by_number(request):

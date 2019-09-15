@@ -8,6 +8,7 @@ from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
 from ingredients.models import Ingredient
 from recipes.forms import RecipeForm, RecipeIngredientForm
 from recipes.models import Recipe, RecipeIngredient
+from django.http import JsonResponse
 
 
 """
@@ -133,3 +134,15 @@ class RecipeIngredientDelete(DeleteView):
     def get_success_url(self):
         messages.success(self.request, "Ingredient deleted successfully from the recipe")
         return reverse('edit_recipe', kwargs={'pk': self.kwargs.get('recipe_id')})
+
+
+"""
+Function that check existence of recipe while creating: 
+-check_recipe_by_name
+"""
+def check_recipe_by_name(request):
+    name = request.GET.get('name', None)  
+    data = {
+        'is_taken': Recipe.objects.filter(name__iexact=name).exists(),
+    }
+    return JsonResponse(data)

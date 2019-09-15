@@ -150,6 +150,21 @@
                     }
             });
         });
+        $('#recipe_name').keyup(function(){
+            var name = $(this).val();
+            $.ajax({
+                url: '{% url "check_recipe_by_name" %}',
+                data: {
+                    'name': name
+                    },
+                dataType: 'json',
+                success: function (data) {
+                    if (data.is_taken) {
+                        $('#recipe_name').after('<p style="color:red;font-size:12px;">A recipe with this name already exists.</p>');
+                        }
+                    }
+            });
+        });
     })
     ;
 </script> 
