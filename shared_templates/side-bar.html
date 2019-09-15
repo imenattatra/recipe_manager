@@ -10,17 +10,17 @@
 
         <ul class="list-unstyled components">
             <p>Recipe Manager</p>
+            <li {% if title == 'Recipes List' %} class="active" {% endif %}>
+                <a href="{% url 'all_recipes' %}">Recipes List</a>
+            </li>
+            <li {% if title == 'Add Recipe' %} class="active" {% endif %}>
+                <a href="{% url 'add_recipe' %}">Add Recipe</a>
+            </li>
             <li {% if title == 'Ingredients List' %} class="active" {% endif %} >
                 <a href="{% url 'all_ingredients' %}">Ingredients List</a>
             </li>
             <li {% if title == 'Add Ingredient' %} class="active" {% endif %}>
                 <a href="{% url 'add_ingredient' %}">Add Ingredient</a>
-            </li>
-             <li {% if title == 'Recipes List' %} class="active" {% endif %}>
-                <a href="{% url 'all_recipes' %}">Recipes List</a>
-            </li>
-            <li {% if title == 'Add Recipe' %} class="active" {% endif %}>
-                <a href="{% url 'add_recipe' %}">Add Recipe</a>
             </li>
         </ul>
     </nav>

@@ -33,10 +33,24 @@
                     <label for="category">Category</label>
                     <select class="form-control" id="unit_name" name="category" >
                         <option disabled value="">Please select one</option>
-                        <option {% if ingredient.category == 'diary' %} selected {% endif %}>Diary</option>
-                        <option {% if ingredient.category == 'vegetables' %} selected {% endif %}>Vegetables</option>
-                        <option {% if ingredient.category == 'fruits' %} selected {% endif %}>Fruits</option>
-                        <option {% if ingredient.category == 'fish' %} selected {% endif %}>Fish</option>
+                        <option {% if ingredient.category == 'Vegetables' %} selected {% endif %}>Vegetables</option>
+                        <option {% if ingredient.category == 'Fruits' %} selected {% endif %}>Fruits</option>
+                        <option {% if ingredient.category == 'Fish' %} selected {% endif %}>Fish</option>
+                        <option {% if ingredient.category == 'Grains' %} selected {% endif %}>Grains</option>
+                        <option {% if ingredient.category == 'Added Sweeteners' %} selected {% endif %}>Added Sweeteners</option>
+                        <option {% if ingredient.category == 'Spices' %} selected {% endif %}>Spices</option>
+                        <option {% if ingredient.category == 'Meats' %} selected {% endif %}>Meats</option>
+                        <option {% if ingredient.category == 'Seafood' %} selected {% endif %}>Seafood</option>
+                        <option {% if ingredient.category == 'Condiments' %} selected {% endif %}>Condiments</option>
+                        <option {% if ingredient.category == 'Oils' %} selected {% endif %}>Oils</option>
+                        <option {% if ingredient.category == 'Seasoning' %} selected {% endif %}>Seasoning</option>
+                        <option {% if ingredient.category == 'Sauces' %} selected {% endif %}>Sauces</option>
+                        <option {% if ingredient.category == 'Legumes' %} selected {% endif %}>Legumes</option>
+                        <option {% if ingredient.category == 'Alcohol' %} selected {% endif %}>Alcohol</option>
+                        <option {% if ingredient.category == 'Soup' %} selected {% endif %}>Soup</option>
+                        <option {% if ingredient.category == 'Nuts' %} selected {% endif %}>Nuts</option>
+                        <option {% if ingredient.category == 'Dessert & Snack' %} selected {% endif %}>Dessert & Snack</option>
+                        <option {% if ingredient.category == 'Beverages' %} selected {% endif %}>Beverages</option>
                     </select> 
                 </div>                   
             </div>

@@ -1,32 +1,5 @@
 from django.db import models
 
-# Unit name choices
-GRAMS = "g"
-KILOGRAMS = "kg"
-CENTILITER = "cl"
-LITER = "l"
-# Category choices
-DIARY = "Diary"
-VEGETABLES = "Vegetables"
-FRUITS = "Fruits"
-FISH = "Fish"
-BAKING_GRAINS = "Backing & GRains"
-ADDED_SWEETENERS = "Added Sweeteners"
-SPICES = "Spices"
-MEATS = "Meats"
-SEAFOOD = "Seafood"
-CONDIMENTS = "Condiments"
-OILS = "Oils"
-SEASONING = "Seasoning"
-SAUCES = "Sauces"
-LEGUMES = "Legumes"
-ALCOHOL = "Alcohol"
-SOUP = "Soup"
-NUTS = "Nuts"
-DESSERT_SNACK = "Dessert & Snack"
-BEVERAGES = "Beverages"
-
-
 class Ingredient(models.Model):
     #
     name = models.CharField(max_length=255,unique=True)
@@ -35,12 +8,12 @@ class Ingredient(models.Model):
     unit_name = models.CharField(
         max_length=255,
         choices=(
-            (GRAMS, GRAMS),
-            (KILOGRAMS, KILOGRAMS),
-            (CENTILITER, CENTILITER),
-            (LITER, LITER),
+            ("g","g"),
+            ("kg", "kg"),
+            ("cl", "cl"),
+            ("l","l"),
         ),
-        default=KILOGRAMS
+        default="kg"
     )
     unit_amount = models.FloatField(default=1)
     #
@@ -48,25 +21,25 @@ class Ingredient(models.Model):
     category = models.CharField(
         max_length=255,
         choices=(
-            (DIARY, DIARY),
-            (VEGETABLES, VEGETABLES),
-            (FRUITS, FRUITS),
-            (BAKING_GRAINS, BAKING_GRAINS),
-            (ADDED_SWEETENERS, ADDED_SWEETENERS),
-            (SPICES, SPICES),
-            (MEATS, MEATS),
-            (SEAFOOD, SEAFOOD),
-            (CONDIMENTS, CONDIMENTS),
-            (OILS, OILS),
-            (SEASONING, SEASONING),
-            (SAUCES, SAUCES),
-            (LEGUMES, LEGUMES),
-            (ALCOHOL, ALCOHOL),
-            (SOUP, SOUP),
-            (NUTS, NUTS),
-            (DESSERT_SNACK, DESSERT_SNACK),
-            (BEVERAGES, BEVERAGES),
+            ("Vegetables", "Vegetables"),
+            ("Fruits", "Fruits"),
+            ("Fish","Fish"),
+            ("Grains", "Grains"),
+            ("Added Sweeteners","Added Sweeteners"),
+            ("Spices", "Spices"),
+            ("Meats", "Meats"),
+            ("Seafood", "Seafood"),
+            ("Condiments", "Condiments"),
+            ("Oils", "Oils"),
+            ("Seasoning", "Seasoning"),
+            ("Sauces", "Sauces"),
+            ("Legumes", "Legumes"),
+            ("Alcohol", "Alcohol"),
+            ("Soup", "Soup"),
+            ("Nuts", "Nuts"),
+            ("Dessert & Snack", "Dessert & Snack"),
+            ("Beverages", "Beverages"),
 
         ),
-        default=FRUITS
+        default="Fruits"
     )

@@ -1,16 +1,6 @@
 from django.db import models
 from django.db.models import Sum
 from ingredients.models import Ingredient
-
-APPETIZERS="Appetizers"
-BEVERAGE="Beverage"
-SOUPS="Soups"
-SALADS="Salads"
-MAIN_DISHES="Main dishes"
-BREADS="Breads"
-ROLLS="Rolls"
-DESSERT="Dessert"
-MISSELANEOUS="Misselaneous"
         
 class Recipe(models.Model):
     name = models.CharField(max_length=255)
@@ -18,17 +8,17 @@ class Recipe(models.Model):
     category=models.CharField(
         max_length=255,
         choices=(
-            (APPETIZERS, APPETIZERS),
-            (BEVERAGE, BEVERAGE),
-            (SOUPS, SOUPS),
-            (SALADS, SALADS),
-            (MAIN_DISHES, MAIN_DISHES),
-            (BREADS, BREADS),
-            (ROLLS, ROLLS),
-            (DESSERT, DESSERT),
-            (MISSELANEOUS, MISSELANEOUS),
+            ("Appetizers", "Appetizers"),
+            ("Beverage", "Beverage"),
+            ("Soups", "Soups"),
+            ("Salads", "Salads"),
+            ("Main dishes", "Main dishes"),
+            ("Breads", "Breads"),
+            ("Rolls", "Rolls"),
+            ("Dessert", "Dessert"),
+            ("Misselaneous", "Misselaneous"),
         ),
-        default=MAIN_DISHES
+        default= "Main dishes"
     )
     @property
     def get_total_cost(self):

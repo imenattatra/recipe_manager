@@ -15,6 +15,7 @@ urlpatterns = [
     path('ingredients/<int:pk>/edit/', IngredientEdit.as_view(), name='edit_ingredient'),
     
     #list and crud URLS for recipes
+    path('', RecipeList.as_view(), name='all_recipes'),
     path('recipes/', RecipeList.as_view(), name='all_recipes'),
     path('recipes/add/', RecipeCreate.as_view(), name='add_recipe'),
     path('recipes/<int:pk>/delete/', RecipeDelete.as_view(), name='delete_recipe'),
