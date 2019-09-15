@@ -6,6 +6,13 @@ from .models import Ingredient
 from .forms import IngredientForm
 from django.urls import reverse
 
+"""
+IngredientList CRUD views in this order: 
+-IngredientList
+-IngredientCreate
+-IngredientDelete
+-IngredientEdit
+"""
 
 class IngredientList(ListView):
     model = Ingredient

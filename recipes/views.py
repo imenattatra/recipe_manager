@@ -11,7 +11,11 @@ from recipes.models import Recipe, RecipeIngredient
 
 
 """
-Recipe CRUD views
+Recipe CRUD views in this order: 
+-RecipeList
+-RecipeCreate
+-RecipeDelete
+-RecipeDetail
 """
 class RecipeList(ListView):
     model = Recipe
@@ -87,9 +91,16 @@ class RecipeDetail(DetailView):
         context['all_ingredients'] = Ingredient.objects.all()
         context['all_recipe_ingredients'] = RecipeIngredient.objects.filter(recipe_id=self.kwargs.get('pk'))
         return context
+
 """
-Recipe INGREDIENT CRUD views (Recipe INGREDIENT=iNGREDIENT + amount of this ingredient for the recipe)
+Recipe Ingredient= ingredient + amount of this ingredient in the recipe
+
+Recipe Ingredient CRUD views in this order:
+-create_recipe_ingredient: add ingredient and its amount to a recipe
+-edit_recipe_ingredient: edit the ingredient or its amount in a recipe
+-RecipeIngredientDelete: remove an ingredient from a recipe
 """
+
 def create_recipe_ingredient(request,recipe_id):
     #FIXME : apply createView with modal to keep the same coding logic
     if request.method == "POST":
@@ -117,7 +128,6 @@ def edit_recipe_ingredient(request,recipe_id,pk):
         except :
             messages.error(request, "Something went wrong.")
     return HttpResponseRedirect('/recipes/' + str(recipe_id) + '/edit/')
-
 class RecipeIngredientDelete(DeleteView):
     model = RecipeIngredient
     def get_success_url(self):
