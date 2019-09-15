@@ -5,80 +5,85 @@
 {% endblock %}
 
 {% block content %}
-<!-- Extended material form grid -->
-<div class="card">
-    <div class="card-body">
-        <form action="{% url 'add_ingredient'%}" method="POST" enctype='multipart/form-data'>
-            {% csrf_token %}
-            <div class="form-group " style="width:150px;heigth:150px;">
-                    <div class="col-md-6 mb-3">
-                        <a target="_blank" id="image" >
-                        <img src="{% static 'img/150x100.png' %}" id="element_image" style='max-width:150px;' />
-                        </a>
-                        <input type="file" class="form-control"id="myfile" style="display:none" placeholder="Picture" name="picture">
-                    </div>
-            </div>
-            <div class="form-row">
-                <div class="col-md-12 mb-3">
-                    <label for="ingredient_number">Article number</label>
-                    <input type="number" class="form-control" id="ingredient_number" placeholder="123456" name="article_number" required="required" >
+<div class="row wow fadeIn" >
+    <div class="container-fluid">
+        <div class="card mb-4 wow fadeIn">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{% url 'add_ingredient'%}" method="POST" enctype='multipart/form-data'>
+                        {% csrf_token %}
+                        <div class="form-group " style="width:150px;heigth:150px;">
+                                <div class="col-md-6 mb-3">
+                                    <a target="_blank" id="image" >
+                                    <img src="{% static 'img/150x100.png' %}" id="element_image" style='max-width:150px;' />
+                                    </a>
+                                    <input type="file" class="form-control"id="myfile" style="display:none" placeholder="Picture" name="picture">
+                                </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="ingredient_number">Article number</label>
+                                <input type="number" class="form-control" id="ingredient_number" placeholder="123456" name="article_number" required="required" >
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="ingredient_name">Ingredient Name</label>
+                                <input type="text" class="form-control" id="ingredient_name" placeholder="Orange" name="name" required="required" >
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="category">Category</label>
+                                <select class="form-control" id="unit_name" name="category" >
+                                    <option disabled value="">Please select one</option>
+                                    <option>Vegetables</option>
+                                    <option>Fruits</option>
+                                    <option>Fish</option>
+                                    <option>Grains</option>
+                                    <option>Added Sweeteners</option>
+                                    <option>Spices</option>
+                                    <option>Meats</option>
+                                    <option>Seafood</option>
+                                    <option>Condiments</option>
+                                    <option>Oils</option>
+                                    <option>Seasoning</option>
+                                    <option>Sauces</option>
+                                    <option>Legumes</option>
+                                    <option>Alcohol</option>
+                                    <option>Soup</option>
+                                    <option>Nuts</option>
+                                    <option>Dessert & Snack</option>
+                                    <option>Beverages</option>
+                                </select>  
+                            </div>                  
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="cost">Cost</label>
+                                <input type="number" class="form-control" id="cost" placeholder="0.00" name="cost_per_unit"  required>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="unit_amount">Unit amount</label>
+                                <input type="number" class="form-control" id="unit_amount" placeholder="0.00" name="unit_amount"  required>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="unit_name">Unit name</label>
+                                <select class="form-control" id="unit_name" name="unit_name" >
+                                    <option disabled value="">Please select one</option>
+                                    <option>g</option>
+                                    <option>kg</option>
+                                    <option>cl</option>
+                                    <option>l</option>
+                                </select>                
+                            </div>
+                        </div>
+                        
+                        <div class="form-row float-right">
+                            <div class="col-md-3 "> <button type="submit" class="btn btn-success btn-md">Save</button> </div> <!-- Grid column -->
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="ingredient_name">Ingredient Name</label>
-                    <input type="text" class="form-control" id="ingredient_name" placeholder="Orange" name="name" required="required" >
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="category">Category</label>
-                    <select class="form-control" id="unit_name" name="category" >
-                        <option disabled value="">Please select one</option>
-                        <option>Vegetables</option>
-                        <option>Fruits</option>
-                        <option>Fish</option>
-                        <option>Grains</option>
-                        <option>Added Sweeteners</option>
-                        <option>Spices</option>
-                        <option>Meats</option>
-                        <option>Seafood</option>
-                        <option>Condiments</option>
-                        <option>Oils</option>
-                        <option>Seasoning</option>
-                        <option>Sauces</option>
-                        <option>Legumes</option>
-                        <option>Alcohol</option>
-                        <option>Soup</option>
-                        <option>Nuts</option>
-                        <option>Dessert & Snack</option>
-                        <option>Beverages</option>
-                    </select>  
-                </div>                  
-            </div>
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="cost">Cost</label>
-                    <input type="number" class="form-control" id="cost" placeholder="0.00" name="cost_per_unit"  required>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <label for="unit_amount">Unit amount</label>
-                    <input type="number" class="form-control" id="unit_amount" placeholder="0.00" name="unit_amount"  required>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <label for="unit_name">Unit name</label>
-                    <select class="form-control" id="unit_name" name="unit_name" >
-                        <option disabled value="">Please select one</option>
-                        <option>g</option>
-                        <option>kg</option>
-                        <option>cl</option>
-                        <option>l</option>
-                    </select>                
-                </div>
-            </div>
-            
-            <div class="form-row float-right">
-                <div class="col-md-3 "> <button type="submit" class="btn btn-success btn-md">Save</button> </div> <!-- Grid column -->
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -5,80 +5,85 @@
 {% endblock %}
 
 {% block content %}
-<!-- Extended material form grid -->
-<div class="card">
-    <div class="card-body">
-        <form action="{% url 'edit_ingredient' ingredient.id %}" method="POST" enctype='multipart/form-data'>
-            {% csrf_token %}
-            <div class="form-group " style="width:150px;heigth:150px;">
-                    <div class="col-md-6 mb-3">
-                        <a target="_blank" id="image" >
-                        <img src="../../../media/{{ingredient.picture}}" id="element_image" style='max-width:150px;' />
-                        </a>
-                        <input type="file" class="form-control"id="myfile" style="display:none" placeholder="Picture" name="picture">
-                    </div>
-            </div>
-            <div class="form-row">
-                <div class="col-md-12 mb-3">
-                    <label for="ingredient_number">Article number</label>
-                    <input type="number" class="form-control" id="ingredient_number" value="{{ingredient.article_number}}" name="article_number" required="required" >
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="ingredient_name">Ingredient Name</label>
-                    <input type="text" class="form-control" id="ingredient_name" value="{{ingredient.name}}" name="name" required="required" >
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="category">Category</label>
-                    <select class="form-control" id="unit_name" name="category" >
-                        <option disabled value="">Please select one</option>
-                        <option {% if ingredient.category == 'Vegetables' %} selected {% endif %}>Vegetables</option>
-                        <option {% if ingredient.category == 'Fruits' %} selected {% endif %}>Fruits</option>
-                        <option {% if ingredient.category == 'Fish' %} selected {% endif %}>Fish</option>
-                        <option {% if ingredient.category == 'Grains' %} selected {% endif %}>Grains</option>
-                        <option {% if ingredient.category == 'Added Sweeteners' %} selected {% endif %}>Added Sweeteners</option>
-                        <option {% if ingredient.category == 'Spices' %} selected {% endif %}>Spices</option>
-                        <option {% if ingredient.category == 'Meats' %} selected {% endif %}>Meats</option>
-                        <option {% if ingredient.category == 'Seafood' %} selected {% endif %}>Seafood</option>
-                        <option {% if ingredient.category == 'Condiments' %} selected {% endif %}>Condiments</option>
-                        <option {% if ingredient.category == 'Oils' %} selected {% endif %}>Oils</option>
-                        <option {% if ingredient.category == 'Seasoning' %} selected {% endif %}>Seasoning</option>
-                        <option {% if ingredient.category == 'Sauces' %} selected {% endif %}>Sauces</option>
-                        <option {% if ingredient.category == 'Legumes' %} selected {% endif %}>Legumes</option>
-                        <option {% if ingredient.category == 'Alcohol' %} selected {% endif %}>Alcohol</option>
-                        <option {% if ingredient.category == 'Soup' %} selected {% endif %}>Soup</option>
-                        <option {% if ingredient.category == 'Nuts' %} selected {% endif %}>Nuts</option>
-                        <option {% if ingredient.category == 'Dessert & Snack' %} selected {% endif %}>Dessert & Snack</option>
-                        <option {% if ingredient.category == 'Beverages' %} selected {% endif %}>Beverages</option>
-                    </select> 
-                </div>                   
-            </div>
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="cost">Cost</label>
-                    <input type="number" class="form-control" id="cost" value="{{ingredient.cost_per_unit}}" name="cost_per_unit"  required>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <label for="unit_amount">Unit amount</label>
-                    <input type="number" class="form-control" id="unit_amount" value="{{ingredient.unit_amount}}" name="unit_amount"  required>
-                </div>
-                <div class="col-md-3 mb-3">
-                    <label for="unit_name">Unit name</label>
-                    <select class="form-control" id="unit_name" name="unit_name" >
-                        <option disabled value="">Please select one</option>
-                        <option {% if ingredient.unit_name == 'g' %} selected {% endif %}>g</option>
-                        <option {% if ingredient.unit_name == 'kg' %} selected {% endif %}>kg</option>
-                        <option {% if ingredient.unit_name == 'cl' %} selected {% endif %}>cl</option>
-                        <option {% if ingredient.unit_name == 'l' %} selected {% endif %}>l</option>
-                    </select>                
-                </div>
-            </div>
+<div class="row wow fadeIn" >
+    <div class="container-fluid">
+        <div class="card mb-4 wow fadeIn">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{% url 'edit_ingredient' ingredient.id %}" method="POST" enctype='multipart/form-data'>
+                        {% csrf_token %}
+                        <div class="form-group " style="width:150px;heigth:150px;">
+                                <div class="col-md-6 mb-3">
+                                    <a target="_blank" id="image" >
+                                    <img src="../../../media/{{ingredient.picture}}" id="element_image" style='max-width:150px;' />
+                                    </a>
+                                    <input type="file" class="form-control"id="myfile" style="display:none" placeholder="Picture" name="picture">
+                                </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12 mb-3">
+                                <label for="ingredient_number">Article number</label>
+                                <input type="number" class="form-control" id="ingredient_number" value="{{ingredient.article_number}}" name="article_number" required="required" >
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="ingredient_name">Ingredient Name</label>
+                                <input type="text" class="form-control" id="ingredient_name" value="{{ingredient.name}}" name="name" required="required" >
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="category">Category</label>
+                                <select class="form-control" id="unit_name" name="category" >
+                                    <option disabled value="">Please select one</option>
+                                    <option {% if ingredient.category == 'Vegetables' %} selected {% endif %}>Vegetables</option>
+                                    <option {% if ingredient.category == 'Fruits' %} selected {% endif %}>Fruits</option>
+                                    <option {% if ingredient.category == 'Fish' %} selected {% endif %}>Fish</option>
+                                    <option {% if ingredient.category == 'Grains' %} selected {% endif %}>Grains</option>
+                                    <option {% if ingredient.category == 'Added Sweeteners' %} selected {% endif %}>Added Sweeteners</option>
+                                    <option {% if ingredient.category == 'Spices' %} selected {% endif %}>Spices</option>
+                                    <option {% if ingredient.category == 'Meats' %} selected {% endif %}>Meats</option>
+                                    <option {% if ingredient.category == 'Seafood' %} selected {% endif %}>Seafood</option>
+                                    <option {% if ingredient.category == 'Condiments' %} selected {% endif %}>Condiments</option>
+                                    <option {% if ingredient.category == 'Oils' %} selected {% endif %}>Oils</option>
+                                    <option {% if ingredient.category == 'Seasoning' %} selected {% endif %}>Seasoning</option>
+                                    <option {% if ingredient.category == 'Sauces' %} selected {% endif %}>Sauces</option>
+                                    <option {% if ingredient.category == 'Legumes' %} selected {% endif %}>Legumes</option>
+                                    <option {% if ingredient.category == 'Alcohol' %} selected {% endif %}>Alcohol</option>
+                                    <option {% if ingredient.category == 'Soup' %} selected {% endif %}>Soup</option>
+                                    <option {% if ingredient.category == 'Nuts' %} selected {% endif %}>Nuts</option>
+                                    <option {% if ingredient.category == 'Dessert & Snack' %} selected {% endif %}>Dessert & Snack</option>
+                                    <option {% if ingredient.category == 'Beverages' %} selected {% endif %}>Beverages</option>
+                                </select> 
+                            </div>                   
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="cost">Cost</label>
+                                <input type="number" class="form-control" id="cost" value="{{ingredient.cost_per_unit}}" name="cost_per_unit"  required>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="unit_amount">Unit amount</label>
+                                <input type="number" class="form-control" id="unit_amount" value="{{ingredient.unit_amount}}" name="unit_amount"  required>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="unit_name">Unit name</label>
+                                <select class="form-control" id="unit_name" name="unit_name" >
+                                    <option disabled value="">Please select one</option>
+                                    <option {% if ingredient.unit_name == 'g' %} selected {% endif %}>g</option>
+                                    <option {% if ingredient.unit_name == 'kg' %} selected {% endif %}>kg</option>
+                                    <option {% if ingredient.unit_name == 'cl' %} selected {% endif %}>cl</option>
+                                    <option {% if ingredient.unit_name == 'l' %} selected {% endif %}>l</option>
+                                </select>                
+                            </div>
+                        </div>
 
-            <div class="form-row float-right">
-                <div class="col-md-3"> <button type="submit" class="btn btn-success btn-md">Save</button> </div> <!-- Grid column -->
+                        <div class="form-row float-right">
+                            <div class="col-md-3"> <button type="submit" class="btn btn-success btn-md">Save</button> </div> <!-- Grid column -->
+                        </div>
+                    </form>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 {% endblock %}

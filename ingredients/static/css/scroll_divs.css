@@ -1,0 +1,13 @@
+body{
+overflow: hidden;
+display: flex;
+}
+.wrapper
+{
+overflow: scroll;
+height: 100vh;
+}
+#paddiv
+{
+padding:20px;
+}

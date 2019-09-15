@@ -13,22 +13,23 @@
 	<link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
 	<link href="{% static 'css/sidebar_navbar.css' %}" rel="stylesheet">
 	<link href="{% static 'css/buttons_images.css' %}" rel="stylesheet">
+	<link href="{% static 'css/scroll_divs.css' %}" rel="stylesheet">
 	{% block style_extra %}
 	{% endblock %}
 </head>
 
-<body class="grey lighten-3">
+<body class="grey lighten-3" >
 
 {% include 'parts/response-modal.html' %}
 {% include 'parts/confirm_delete.html' %}
 
-<div class="wrapper">
 {% include 'side-bar.html' %}
+<div class="wrapper">
     <div id="content">
 	{% include 'nav-bar.html' %}
 	{% block content %}
 	{% endblock %}
- </div>
+    </div>
 </div>
 
 <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script> 
