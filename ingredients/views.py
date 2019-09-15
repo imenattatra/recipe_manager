@@ -5,9 +5,10 @@ from django.views.generic import DeleteView, UpdateView,ListView,CreateView
 from .models import Ingredient
 from .forms import IngredientForm
 from django.urls import reverse
+from django.http import JsonResponse
 
 """
-IngredientList CRUD views in this order: 
+Ingredient CRUD views in this order: 
 -IngredientList
 -IngredientCreate
 -IngredientDelete
@@ -84,3 +85,23 @@ class IngredientEdit(UpdateView):
         form.save()
         messages.success(self.request, "Ingredient modified successfully")
         return HttpResponseRedirect('/ingredients/')
+
+
+"""
+Functions that check existence of ingredient while creating: 
+-check_ingredient_by_number
+"""
+
+def check_ingredient_by_number(request):
+    number = request.GET.get('number', None)  
+    data = {
+        'is_taken': Ingredient.objects.filter(article_number__iexact=number).exists(),
+    }
+    return JsonResponse(data)
+
+def check_ingredient_by_name(request):
+    name = request.GET.get('name', None)  
+    data = {
+        'is_taken': Ingredient.objects.filter(name__iexact=name).exists(),
+    }
+    return JsonResponse(data)

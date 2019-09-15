@@ -27,5 +27,9 @@ urlpatterns = [
     path('recipes/<int:recipe_id>/recipeingredient/<int:pk>/delete/',RecipeIngredientDelete.as_view(),name='delete_recipe_ingredient'),
     path('recipes/<int:recipe_id>/recipeingredient/<int:pk>/edit/',edit_recipe_ingredient,name='edit_recipe_ingredient'),
 
+    #Ajax call to check existence of ingredient/recipe while creating
+    path('check_ingredient_by_number', check_ingredient_by_number, name='check_ingredient_by_number'),
+    path('check_ingredient_by_name', check_ingredient_by_name, name='check_ingredient_by_name'),
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)\
 + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
