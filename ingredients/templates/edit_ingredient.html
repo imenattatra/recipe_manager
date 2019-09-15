@@ -24,12 +24,14 @@
                             <div class="col-md-12 mb-3">
                                 <label for="ingredient_number">Article number</label>
                                 <input type="number" class="form-control" id="ingredient_number" value="{{ingredient.article_number}}" name="article_number" required="required" >
+                                <p style="color:red;font-size:12px;" id="msg_after_name"></p>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label for="ingredient_name">Ingredient Name</label>
                                 <input type="text" class="form-control" id="ingredient_name" value="{{ingredient.name}}" name="name" required="required" >
+                                <p style="color:red;font-size:12px;" id="msg_after_name"></p>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="category">Category</label>
@@ -58,7 +60,7 @@
                         </div>
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
-                                <label for="cost">Cost</label>
+                                <label for="cost">Cost (€)</label>
                                 <input type="number" class="form-control" id="cost" value="{{ingredient.cost_per_unit}}" name="cost_per_unit"  required>
                             </div>
                             <div class="col-md-3 mb-3">

@@ -131,8 +131,12 @@
                 dataType: 'json',
                 success: function (data) {
                     if (data.is_taken) {
-                        $('#ingredient_number').after('<p style="color:red;">An ingredient with this article number already exists.</p>');
+                        $('#msg_after_number').text('An ingredient with this article already exists.');
                         }
+                    else
+                    {
+                        $('#msg_after_number').text('');
+                    }
                     }
             });
         });
@@ -146,9 +150,14 @@
                 dataType: 'json',
                 success: function (data) {
                     if (data.is_taken) {
-                        $('#ingredient_name').after('<p style="color:red;font-size:12px;">An ingredient with this name already exists.</p>');
+                        $('#msg_after_name').text('An ingredient with this name already exists.');
                         }
+                    else
+                    {
+                        $('#msg_after_name').text('');
                     }
+                    }
+                   
             });
         });
         $('#recipe_name').keyup(function(){
@@ -161,8 +170,12 @@
                 dataType: 'json',
                 success: function (data) {
                     if (data.is_taken) {
-                        $('#recipe_name').after('<p style="color:red;font-size:12px;">A recipe with this name already exists.</p>');
+                        $('#msg_after_name').text('A recipe with this name already exists.');
                         }
+                    else
+                    {
+                        $('#msg_after_name').text('');
+                    }
                     }
             });
         });

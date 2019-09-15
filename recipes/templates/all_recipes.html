@@ -21,6 +21,11 @@
 								   <a href="{% url 'delete_recipe' recipe.id %}" class='btn btn-danger btn-circle delete-recipe float-left' id="{{recipe.id}}"  title="Delete recipe"><i class="fas fa-trash-alt"></i></a>
 								</div>
 							</div>
+						{% empty %}
+						<h2>You have no recipes yet... add a recipe</h2> 
+						<a href="{% url 'add_recipe' %}" type="button"  class="btn btn-info btn-circle">
+                        <i class="fas fa-plus"></i>
+                    	</a>
 					    {% endfor %}
 				</div>
 		 	</div>
