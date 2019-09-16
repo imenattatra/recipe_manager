@@ -6,17 +6,36 @@
         <button type="button" id="sidebarCollapse" class="btn btn-info btn-circle">
             <i class="fas fa-align-left"></i>
         </button>
-
-        <button class="btn btn-dark d-inline-block d-lg-none ml-auto btn-circle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <h5 class="small-device-title">
+			<img src='{% static "img/chef.png" %}' class="img-small z-depth-1 rounded-circle" >
+                Recipe Manager
+        </h5>
+        <button class="btn btn-dark d-inline-block d-lg-none ml-auto btn-circle" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">            
             <i class="fas fa-align-justify"></i>
         </button>
       
         <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
-                <li class="nav-item">
+                <li class="nav-item big-device-title">
                     <h2>{{title}}</h2>
+                </li>
+                <li class="small-devices-item">
+                    <hr/>
+                </li>
+                <li {% if title == 'Recipes List' %} class="active nav-item small-devices-item" {% else %} class="nav-item small-devices-item"{% endif %}>
+                    <a href="{% url 'all_recipes' %}">Recipes List</a>
+                </li>
+                <li {% if title == 'Add Recipe' %} class="active nav-item small-devices-item" {% else %} class="nav-item small-devices-item"{% endif %}>
+                    <a href="{% url 'add_recipe' %}">Add Recipe</a>
+                </li>
+                <li {% if title == 'Ingredients List' %} class="active nav-item small-devices-item "{% else %} class="nav-item small-devices-item" {% endif %} >
+                    <a href="{% url 'all_ingredients' %}">Ingredients List</a>
+                </li>
+                <li {% if title == 'Add Ingredient' %} class="active nav-item small-devices-item" {% else %} class="nav-item small-devices-item"{% endif %}>
+                    <a href="{% url 'add_ingredient' %}">Add Ingredient</a>
                 </li>
             </ul>
         </div>
+        
     </div>
 </nav>

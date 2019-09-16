@@ -132,17 +132,30 @@ ul ul a {
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
+/*  Add responsivity to small devices */
 
-@media (max-width: 768px) {
+@media (max-width: 760px) {
     #sidebar {
-        margin-left: -250px;
+      margin-left: -251px;
     }
-    #sidebar.active {
-        margin-left: 0;
-    }
-    #sidebarCollapse span {
+    #sidebarCollapse,.big-device-title{
         display: none;
     }
+
+  }
+@media (min-width: 760px) {
+    .small-devices-item,.small-device-title{
+        display: none;
+    }
+  }
+/* ---------------------------------------------------
+    HOW TO SHOW LINKS WHEN THERE IS NO SIDEBAR
+----------------------------------------------------- */
+.small-devices-item.active{
+    background-color: gray;
+}
+.small-devices-item:hover{
+    background-color: white;
 }
 /* ---------------------------------------------------
     Pictures
