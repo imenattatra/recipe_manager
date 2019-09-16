@@ -67,7 +67,8 @@ class RecipeEdit(UpdateView):
         context['all_recipe_ingredients'] = RecipeIngredient.objects.filter(recipe_id=self.kwargs.get('pk'))
         #hide ingredients that are already in recipe from selection
         existing_ingredients=Ingredient.objects.filter(recipeingredient__in=context['all_recipe_ingredients'] )
-        context['all_ingredients'] = Ingredient.objects.exclude(id__in=existing_ingredients)
+        context['all_ingredients'] = Ingredient.objects.all()
+        context['not_already_existing_ingredients'] = Ingredient.objects.exclude(id__in=existing_ingredients)
         return context
 
     def form_invalid(self, form):

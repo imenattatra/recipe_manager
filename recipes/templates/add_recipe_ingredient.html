@@ -19,7 +19,7 @@
                         <label for="category">Ingredient</label>
                         <select class="form-control" id="ingredient" name="ingredient" >
                             <option disabled value="">Please select one</option>
-                             {% for ing in all_ingredients %}
+                             {% for ing in not_already_existing_ingredients %}
                             <option value='{{ing.id}}'>{{ing.name}}</option>
                              {% endfor %}
                         </select>              

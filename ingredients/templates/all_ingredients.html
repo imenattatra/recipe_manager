@@ -29,7 +29,7 @@
                                 </td>
                                 <td>{{ing.name}}</td>
                                 <td>{{ing.category}}</td>
-                                <td>{{ing.cost_per_unit}} € per {{ing.unit_amount}} {{ing.unit_name}} </td>    
+                                <td>{{ing.cost_per_unit|floatformat:2 }} € per {{ing.unit_amount|floatformat:2 }} {{ing.unit_name}} </td>    
                                 <td scope="row">
                                     <a href="{% url 'edit_ingredient' ing.id  %}" class='btn btn-success btn-circle'  title="Edit ingredient"><i class="fas fa-edit"></i></a>
                                     <a href="{% url 'delete_ingredient' ing.id  %}" class='btn btn-danger btn-circle delete-ingredient' id="{{ing.id}}"  title="Delete ingredient"><i class="fas fa-trash-alt"></i></a>

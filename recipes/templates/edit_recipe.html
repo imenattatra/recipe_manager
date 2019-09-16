@@ -63,7 +63,7 @@
                     <a href="{% url 'add_recipe_ingredient' recipe.id %}" type="button" id='{{recipe.id}}' class="btn btn-info btn-circle add-ingredient">
                         <i class="fas fa-plus"></i>
                     </a>
-                    <div class="float-right"">Total cost : € {{recipe.get_total_cost}} </div> <!-- Grid column -->
+                    <div class="float-right"">Total cost : € {{recipe.get_total_cost|floatformat:2 }} </div> <!-- Grid column -->
 
                 </h5>  
                 
@@ -89,8 +89,8 @@
                                         <td>
                                             <a href="#"> <img src="../../../media/{{ing.ingredient.picture}}" class="img-small z-depth-1 rounded-circle" alt="{{ing.article_number}} {{ing.name}}"></a>
                                         </td>
-                                        <td>{{ing.amount}} {{ing.ingredient.unit_name}}</td>
-                                        <td>€ {{ing.get_cost}}</td>
+                                        <td>{{ing.amount|floatformat:2 }} {{ing.ingredient.unit_name}}</td>
+                                        <td>€ {{ing.get_cost|floatformat:2 }}</td>
                                         <td scope="row">
                                             <a href="{% url 'edit_recipe_ingredient' recipe.id ing.id  %}" class='btn btn-success btn-circle edit-ingredient' id="{{ing.id}}"   title="Edit ingredient"><i class="fas fa-edit"></i></a>
                                             <a href="{% url 'delete_recipe_ingredient' recipe.id ing.id  %}" class='btn btn-danger btn-circle delete-ingredient' id="{{ing.id}}"  title="Delete ingredient"><i class="fas fa-trash-alt"></i></a>

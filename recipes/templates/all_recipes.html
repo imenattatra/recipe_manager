@@ -13,7 +13,7 @@
 								<img class="card-img-top" src='../media/{{recipe.picture}}' alt="" style="height:100px;">
 								<div class="card-body">
 									<h5 class="card-title">{{recipe.name}}</h5>
-									<p class="card-text">€ {{recipe.get_total_cost}}</p>
+									<p class="card-text">€ {{recipe.get_total_cost|floatformat:2 }}</p>
 								</div>
 								<div class="card-footer">
 								   <a href="{% url 'edit_recipe' recipe.id %}" class='btn btn-success btn-circle float-right'  title="Edit recipe"><i class="fas fa-edit"></i></a>

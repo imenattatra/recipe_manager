@@ -61,11 +61,11 @@
                         <div class="form-row">
                             <div class="col-md-6 mb-3">
                                 <label for="cost">Cost (€)</label>
-                                <input type="number" class="form-control" id="cost" value="{{ingredient.cost_per_unit}}" name="cost_per_unit"  required>
+                                <input type="number" step="0.01" class="form-control" id="cost" value="{{ingredient.cost_per_unit|floatformat:2 }}" name="cost_per_unit"  required>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="unit_amount">Unit amount</label>
-                                <input type="number" class="form-control" id="unit_amount" value="{{ingredient.unit_amount}}" name="unit_amount"  required>
+                                <input type="number" step="0.01" class="form-control" id="unit_amount" value="{{ingredient.unit_amount}}" name="unit_amount"  required>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="unit_name">Unit name</label>
