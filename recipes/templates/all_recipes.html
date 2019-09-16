@@ -22,10 +22,11 @@
 								</div>
 							</div>
 						{% empty %}
-						<h2>You have no recipes yet... add a recipe</h2> 
-						<a href="{% url 'add_recipe' %}" type="button"  class="btn btn-info btn-circle">
-                        <i class="fas fa-plus"></i>
-                    	</a>
+						<p>You have no recipes yet
+							<a href="{% url 'add_recipe' %}" type="button"  class="btn btn-info btn-circle">
+							<i class="fas fa-plus"></i>
+							</a>
+						</p>
 					    {% endfor %}
 				</div>
 		 	</div>
