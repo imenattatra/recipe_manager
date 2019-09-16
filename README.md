@@ -1,17 +1,15 @@
 # RECIPE MANAGER
+#heroku link to view app : 
+https://recipemanagertest.herokuapp.com/
 
-
-
-### dependencies
+### step1: install dependencies
  - pip install -r requirements_local.txt
  
  
-### build
+### step2: build
  - python manage.py migrate
  
 
-### run
+### step3: run
  - python manage.py runserver
 
-#heroku link to view app : 
-https://recipemanagertest.herokuapp.com/
