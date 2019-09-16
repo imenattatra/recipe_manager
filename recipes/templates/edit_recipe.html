@@ -66,10 +66,11 @@
                 </p>
                 {% else %}
                 <h5>Edit Recipe's Ingredients
-                   
-                    <a href="{% url 'add_recipe_ingredient' recipe.id %}" type="button" id='{{recipe.id}}' class="btn btn-info btn-circle add-ingredient">
-                        <i class="fas fa-plus"></i>
-                    </a>
+                    {% if not_already_existing_ingredients.count != 0 %}
+                        <a href="{% url 'add_recipe_ingredient' recipe.id %}" type="button" id='{{recipe.id}}' class="btn btn-info btn-circle add-ingredient">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                    {% endif %}
                     <div class="float-right"">Total cost : € {{recipe.get_total_cost|floatformat:2 }} </div> <!-- Grid column -->
                 </h5>  
                 
