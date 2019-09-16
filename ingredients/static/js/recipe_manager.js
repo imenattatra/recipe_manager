@@ -69,7 +69,11 @@ $(document).ready(function () {
     /***
     Scipt to display ingredients in a datatable
     ***/
-    $('#ingredients_table').DataTable();
+    $('#ingredients_table').DataTable(
+        {
+            'scrollX': true
+        } 
+    );
     /***
     Scipt that check ingredient or recipe doesnt exist yet while creating it       
     ***/
