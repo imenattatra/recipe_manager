@@ -10,7 +10,7 @@
 				<div class="row justify-content-center" >
 					    {% for recipe in all_recipes %}
 							<div class="card col-sm-2 my-3" style="padding-right: 0px!important; padding-left: 0px!important;margin-right: 10px; margin-left: 10px;" >
-								<img class="card-img-top" src='../media/{{recipe.picture}}' alt="" style="height:100px;">
+								<img class="card-img-top" {% if recipe.picture %} src='../media/{{recipe.picture}}' {% else %} src="{% static 'img/150x100.png' %}" {% endif %} alt="" style="height:100px;">
 								<div class="card-body">
 									<h5 class="card-title">{{recipe.name}}</h5>
 									<p class="card-text">€ {{recipe.get_total_cost|floatformat:2 }}</p>

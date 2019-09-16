@@ -5,6 +5,13 @@
 {% endblock %}
 
 {% block content %}
+{% if all_ingredients.count == 0 %}   
+<p class="text-center">You have no ingredient yet
+    <a href="{% url 'add_ingredient' %}" type="button"  class="btn btn-info btn-circle">
+    <i class="fas fa-plus"></i>
+    </a>
+</p>
+{% else %}    
 
 <div class="row wow fadeIn" >
     <div class="container-fluid">
@@ -51,4 +58,6 @@
         </div>
     </div>
 </div>
+{% endif %}    
+
 {% endblock %}

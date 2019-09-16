@@ -144,7 +144,7 @@ ul ul a {
 
   }
 @media (min-width: 760px) {
-    .small-devices-item,.small-device-title{
+    .small-devices-item,.small-devices-item-hr,.small-device-title{
         display: none;
     }
   }

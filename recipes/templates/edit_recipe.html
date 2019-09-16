@@ -22,7 +22,7 @@
                             <div class="form-group float-left">
                                 <div class="col-md-6 mb-3">
                                     <a target="_blank" id="image" >
-                                    <img src="../../../media/{{recipe.picture}}" id="element_image" style='max-width:150px;' />
+                                    <img {% if recipe.picture %} src="../../../media/{{recipe.picture}}" {% else %} src="{% static 'img/150x100.png' %}" {% endif %} id="element_image" style='max-width:150px;' />
                                     </a>
                                     <input type="file" class="form-control"id="myfile" style="display:none" placeholder="Picture" name="picture">
                                 </div>
@@ -58,16 +58,22 @@
 
                     </div>
                 </div>
-
+                {% if all_ingredients.count == 0  %}
+                <p class="text-center">You have no ingredient to add to the recipe yet
+                    <a href="{% url 'add_ingredient' %}" type="button"  class="btn btn-info btn-circle">
+                    <i class="fas fa-plus"></i>
+                    </a>
+                </p>
+                {% else %}
                 <h5>Edit Recipe's Ingredients
+                   
                     <a href="{% url 'add_recipe_ingredient' recipe.id %}" type="button" id='{{recipe.id}}' class="btn btn-info btn-circle add-ingredient">
                         <i class="fas fa-plus"></i>
                     </a>
                     <div class="float-right"">Total cost : € {{recipe.get_total_cost|floatformat:2 }} </div> <!-- Grid column -->
-
                 </h5>  
                 
-
+                
                 <div class="row wow fadeIn">
                     <div class="container-fluid">
                         <div class="card mb-4 wow fadeIn">
@@ -102,6 +108,7 @@
                         </div>
                     </div>
                 </div>
+                {% endif %}
 
             </form>
         </div>
