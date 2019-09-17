@@ -3,7 +3,7 @@ from django.db.models import Sum
 from ingredients.models import Ingredient
         
 class Recipe(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255,unique=True)
     picture = models.ImageField(upload_to='recipes/', blank=True,null=True)
     category=models.CharField(
         max_length=255,
