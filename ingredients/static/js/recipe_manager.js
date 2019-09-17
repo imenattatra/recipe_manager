@@ -74,66 +74,6 @@ $(document).ready(function () {
             'scrollX': true
         } 
     );
-    /***
-    Scipt that check ingredient or recipe doesnt exist yet while creating it       
-    ***/
-    $('#ingredient_number').keyup(function(){
-        var number = $(this).val();
-        $.ajax({
-            url: '{% url "check_ingredient_by_number" %}',
-            data: {
-                'number': number
-                },
-            dataType: 'json',
-            success: function (data) {
-                if (data.is_taken) {
-                    $('#msg_after_number').text('An ingredient with this article already exists.');
-                    }
-                else
-                {
-                    $('#msg_after_number').text('');
-                }
-                }
-        });
-    });
-    $('#ingredient_name').keyup(function(){
-        var name = $(this).val();
-        $.ajax({
-            url: '{% url "check_ingredient_by_name" %}',
-            data: {
-                'name': name
-                },
-            dataType: 'json',
-            success: function (data) {
-                if (data.is_taken) {
-                    $('#msg_after_name').text('An ingredient with this name already exists.');
-                    }
-                else
-                {
-                    $('#msg_after_name').text('');
-                }
-                }
-                
-        });
-    });
-    $('#recipe_name').keyup(function(){
-        var name = $(this).val();
-        $.ajax({
-            url: '{% url "check_recipe_by_name" %}',
-            data: {
-                'name': name
-                },
-            dataType: 'json',
-            success: function (data) {
-                if (data.is_taken) {
-                    $('#msg_after_name').text('A recipe with this name already exists.');
-                    }
-                else
-                {
-                    $('#msg_after_name').text('');
-                }
-                }
-        });
-    });
+
 })
 ;
